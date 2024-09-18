@@ -721,6 +721,16 @@ div.box > .box-content {
     padding-left: 1rem;
     padding-right: 1rem;
 }
+/* remove margin if only a single code block is contained in the tab */
+#R-body .box-content:not(:has(> p)):has(> div[class*="highlight"]:only-of-type),
+#R-body .box-content:has(> p:empty):has(> div[class*="highlight"]:only-of-type){
+    padding: 0;
+}
+/* remove border from a code block if single  */
+#R-body .box-content:not(:has(> p)) > div[class*="highlight"]:only-of-type > pre,
+#R-body .box-content:has(> p:empty) > div[class*="highlight"]:only-of-type > pre{
+    border: 0;
+}
 
 p:empty {
     /* in case of image render hook, Hugo may generate empty <p>s that we want to ignore */
@@ -1532,21 +1542,21 @@ html[dir="rtl"] .expand > .expand-label > i.fa-chevron-right {
     display: none;
 }
 
-.include.hide-first-heading h1 + h2:first-of-type,
-.include.hide-first-heading h1 + h3:first-of-type,
-.include.hide-first-heading h2 + h3:first-of-type,
-.include.hide-first-heading h1 + h4:first-of-type,
-.include.hide-first-heading h2 + h4:first-of-type,
-.include.hide-first-heading h3 + h4:first-of-type,
-.include.hide-first-heading h1 + h5:first-of-type,
-.include.hide-first-heading h2 + h5:first-of-type,
-.include.hide-first-heading h3 + h5:first-of-type,
-.include.hide-first-heading h4 + h5:first-of-type,
-.include.hide-first-heading h1 + h6:first-of-type,
-.include.hide-first-heading h2 + h6:first-of-type,
-.include.hide-first-heading h3 + h6:first-of-type,
-.include.hide-first-heading h4 + h6:first-of-type,
-.include.hide-first-heading h5 + h6:first-of-type {
+.include.hide-first-heading h1 ~ h2:first-of-type,
+.include.hide-first-heading h1 ~ h3:first-of-type,
+.include.hide-first-heading h2 ~ h3:first-of-type,
+.include.hide-first-heading h1 ~ h4:first-of-type,
+.include.hide-first-heading h2 ~ h4:first-of-type,
+.include.hide-first-heading h3 ~ h4:first-of-type,
+.include.hide-first-heading h1 ~ h5:first-of-type,
+.include.hide-first-heading h2 ~ h5:first-of-type,
+.include.hide-first-heading h3 ~ h5:first-of-type,
+.include.hide-first-heading h4 ~ h5:first-of-type,
+.include.hide-first-heading h1 ~ h6:first-of-type,
+.include.hide-first-heading h2 ~ h6:first-of-type,
+.include.hide-first-heading h3 ~ h6:first-of-type,
+.include.hide-first-heading h4 ~ h6:first-of-type,
+.include.hide-first-heading h5 ~ h6:first-of-type {
     display: block;
 }
 
